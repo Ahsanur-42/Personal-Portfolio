@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./admin.js" defer></script>
+    <style>
+      /* input table css */
+      .container {
+        width: 90%;
+        max-width: 800px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .title {
+        text-align: center;
+        color: #6b46c1;
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .table-container {
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        max-width: 800px;
+        border-collapse: collapse;
+        text-align: left;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+
+      .header-row {
+        background-color: #6b46c1;
+        color: white;
+      }
+
+      tr:hover {
+        background-color: #9c88ff;
+        color: white;
+      }
+
+      .delete-button {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      .delete-button:hover {
+        background-color: #c0392b;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .toast {
+        visibility: hidden;
+        max-width: 300px;
+        margin: 20px auto;
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        border-radius: 4px;
+        position: relative;
+        top: 20px;
+        z-index: 1;
+      }
+
+      .toast.show {
+        visibility: visible;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+
+      @keyframes fadein {
+        from {
+          top: 0;
+          opacity: 0;
+        }
+        to {
+          top: 20px;
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeout {
+        from {
+          top: 20px;
+          opacity: 1;
+        }
+        to {
+          top: 0;
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Admin Panel</h1>
+
+      <!-- Loading indicator -->
+      <div id="loadingIndicator" class="loading hidden">
+        Loading contacts...
+      </div>
+
+      <!-- Error message -->
+      <div id="errorMessage" class="error-message hidden"></div>
+
+      <!-- Table container -->
+      <div class="table-container">
+        <table id="contactsTable" class="contacts-table">
+          <thead>
+            <tr class="header-row">
+              <th>Name</th>
+              <th>Email</th>
+              <th>Message</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="contactsTableBody">
+            <!-- Dynamic rows will be inserted here -->
+          </tbody>
+
+          <tbody>
+            <!-- Dynamic content will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Toast message -->
+    <div id="toastMessage" class="toast"></div>
+  </body>
+</html>
